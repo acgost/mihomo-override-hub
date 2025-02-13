@@ -369,7 +369,6 @@ rules:
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Disney,Disney
   - RULE-SET,Netflix,Netflix
-  - RULE-SET,Emby,Emby
   - RULE-SET,BiliBili,BiliBili
   - RULE-SET,ChinaMedia,DIRECT
   - RULE-SET,GlobalMedia,策略选择
