@@ -1,7 +1,7 @@
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [自动选择,香港节点,台湾节点,狮城节点,日本节点,美国节点,手动选择]
+    proxies: [ 自动选择,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Static.png
 
   - name: "手动选择"
@@ -12,77 +12,72 @@ proxy-groups:
 
   - name: "黑白名单"
     type: select
-    proxies: [策略选择,DIRECT]
+    proxies: [ 策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Final.png
 
   - name: "Apple"
     type: select
-    proxies: [美国节点,策略选择,DIRECT]
+    proxies: [ 美国节点,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Apple.png
 
   - name: "系统更新"
     type: select
-    proxies: [美国节点,策略选择,DIRECT,REJECT]
+    proxies: [ 美国节点,策略选择,DIRECT,REJECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Adblock.png
 
   - name: "Google"
     type: select
-    proxies: [美国节点,策略选择,DIRECT]
+    proxies: [ 美国节点,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Google.png
 
   - name: "Microsoft"
     type: select
-    proxies: [美国节点,策略选择,DIRECT]
+    proxies: [ 美国节点,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Microsoft.png
 
   - name: "OpenAI"
     type: select
-    proxies: [狮城节点,日本节点,美国节点,策略选择,DIRECT]
+    proxies: [ 狮城节点,日本节点,美国节点,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/OpenAI.png
 
   - name: "PayPal"
     type: select
-    proxies: [美国节点,DIRECT]
+    proxies: [ 美国节点,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Paypal.png
 
   - name: "Telegram"
     type: select
-    proxies: [策略选择,美国节点,DIRECT]
+    proxies: [ 策略选择,美国节点,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Telegram.png
 
   - name: "TikTok"
     type: select
-    proxies: [日本节点,韩国节点,台湾节点,狮城节点,香港节点,美国节点,手动选择,DIRECT]
+    proxies: [ 日本节点,韩国节点,台湾节点,狮城节点,香港节点,美国节点,手动选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/TikTok.png
 
   - name: "YouTube"
     type: select
-    proxies: [策略选择,美国节点,DIRECT]
+    proxies: [ 策略选择,美国节点,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/YouTube.png
 
   - name: "Disney"
     type: select
-    proxies: [狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT]
+    proxies: [ 狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/DisneyPlus.png
 
   - name: "Netflix"
     type: select
-    proxies: [狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT]
+    proxies: [ 狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Netflix.png
-
-  - name: "Emby"
-    type: select
-    proxies: [Emby代理节点,Emby专用节点,DIRECT]
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
     type: select
-    proxies: [DIRECT,香港节点,台湾节点,手动选择]     
+    proxies: [ DIRECT,香港节点,台湾节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Bili.png
 
   - name: "Speedtest"
     type: select
-    proxies: [DIRECT,策略选择]
+    proxies: [ DIRECT,策略选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Speedtest.png
 
   - name: "自动选择"
@@ -147,24 +142,6 @@ proxy-groups:
     include-all: true
     filter: ^(?!.*(媒体|(?i)emby)).*(美|(?i)US|(?i)States|American).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
-
-  - name: "Emby专用节点"
-    type: url-test
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    filter: ^.*(?i)emby.*$
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
-
-  - name: "Emby代理节点"
-    type: url-test
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    filter: ^(?!.*(媒体|(?i)emby|(?i)steam|🇯🇵|日|(?i)JP|(?i)Japan)).*\D0\..*$
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
 rule-providers:
   # 直连规则
