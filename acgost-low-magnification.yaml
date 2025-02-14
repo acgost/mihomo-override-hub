@@ -75,7 +75,7 @@ proxy-groups:
 
   - name: "Emby"
     type: select
-    proxies: [ Emby省流,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT ]
+    proxies: [ DIRECT,Emby省流,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
