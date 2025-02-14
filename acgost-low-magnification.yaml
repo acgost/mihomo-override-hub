@@ -1,3 +1,6 @@
+# 有低倍率节点请使用这个覆写
+# 有低倍率节点请使用这个覆写
+# 有低倍率节点请使用这个覆写
 proxy-groups:
   - name: "策略选择"
     type: select
@@ -69,6 +72,11 @@ proxy-groups:
     type: select
     proxies: [ 狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Netflix.png
+
+  - name: "Emby"
+    type: select
+    proxies: [ Emby省流,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT ]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
     type: select
@@ -152,6 +160,16 @@ proxy-groups:
     filter: ^(?!.*(媒体|(?i)emby)).*(美|(?i)US|(?i)States|American).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
+  # 屏蔽了日本地区的低倍率节点
+  - name: "Emby省流"
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    include-all: true
+    filter: ^(?!.*(媒体|(?i)emby|(?i)steam|🇯🇵|日|(?i)JP|(?i)Japan)).*\D0\..*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
+
 rule-providers:
   # 直连规则
   Direct:
@@ -218,6 +236,14 @@ rule-providers:
     interval: 86400
     path: ./RuleSet/Netflix.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml
+
+  # Emby规则
+  Emby:
+    type: http
+    behavior: classical
+    interval: 86400
+    path: ./RuleSet/Emby.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml
 
   # BiliBili规则
   BiliBili:
@@ -370,6 +396,7 @@ rules:
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Disney,Disney
   - RULE-SET,Netflix,Netflix
+  - RULE-SET,Emby,Emby
   - RULE-SET,BiliBili,BiliBili
   - RULE-SET,ChinaMedia,DIRECT
   - RULE-SET,GlobalMedia,策略选择
