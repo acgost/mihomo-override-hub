@@ -269,7 +269,7 @@ dns:
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [ 细水长流,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
+    proxies: [ 细水长流,放任自流,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Static.png
 
   - name: "手动选择"
