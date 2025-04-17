@@ -269,7 +269,7 @@ dns:
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [ 超级省流,普通省流,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
+    proxies: [ 细水长流,放任自流,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Static.png
 
   - name: "手动选择"
@@ -353,7 +353,7 @@ proxy-groups:
     proxies: [ DIRECT,策略选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Speedtest.png
 
-  - name: "超级省流"
+  - name: "细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
@@ -362,7 +362,7 @@ proxy-groups:
     filter: ^(?!.*(媒体|(?i)emby|(?i)steam)).*\D0\..*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Urltest.png
 
-  - name: "普通省流"
+  - name: "放任自流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
