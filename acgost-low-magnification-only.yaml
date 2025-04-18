@@ -413,7 +413,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(日用|媒体|(?i)emby)).*(日|(?i)JP|(?i)Japan).*$|^*(日|(?i)JP|(?i)Japan).*日用.*\D0\..*$
+    filter: ^(?!.*(日用|媒体|(?i)emby)).*(日|(?i)JP|(?i)Japan).*\D0\..*$|^*(日|(?i)JP|(?i)Japan).*日用.*\D0\..*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/JP.png
 
   - name: "美国节点"
