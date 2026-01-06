@@ -275,7 +275,7 @@ proxy-groups:
   - name: "手动选择"
     type: select
     include-all: true
-    filter: ^(?!.*(剩余|到期|(?i)emby|(?i)steam)).*\D0\..*$
+    filter: ^(?!.*(剩余|到期|(?i)emby|(?i)steam)).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/Manual.png
 
   - name: "黑白名单"
@@ -359,7 +359,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby|(?i)steam)).*\D0\..*$
+    filter: ^(?!.*((?i)emby|(?i)steam)).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/Urltest.png
 
   - name: "放任自流"
@@ -368,7 +368,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: (^(?!.*((?i)emby|(?i)steam)).*\D0\..*$)|(^(?!.*(倍|剩余|到期|(?i)emby|\.)).*$)
+    filter: (^(?!.*((?i)emby|(?i)steam)).*$)|(^(?!.*(倍|剩余|到期|(?i)emby|\.)).*$)
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/Available.png
 
   - name: "香港节点"
@@ -377,7 +377,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(港|(?i)HK|(?i)Hong).*\D0\..*$
+    filter: ^(?!.*((?i)emby)).*(港|(?i)HK|(?i)Hong).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/HK.png
 
   - name: "台湾节点"
@@ -386,7 +386,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(台|(?i)TW|(?i)Taiwan).*\D0\..*$
+    filter: ^(?!.*((?i)emby)).*(台|(?i)TW|(?i)Taiwan).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/TW.png
 
   - name: "狮城节点"
@@ -395,7 +395,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(新|狮|獅|(?i)SG|(?i)Singapore).*\D0\..*$
+    filter: ^(?!.*((?i)emby)).*(新|狮|獅|(?i)SG|(?i)Singapore).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/SG.png
 
   - name: "韩国节点"
@@ -404,7 +404,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(韩|韓|(?i)KR|(?i)KOR|(?i)Korean).*\D0\..*$
+    filter: ^(?!.*((?i)emby)).*(韩|韓|(?i)KR|(?i)KOR|(?i)Korean).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/KR.png
 
   - name: "日本节点"
@@ -413,7 +413,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*\D0\..*$|^*(日|(?i)JP|(?i)Japan).*日用.*\D0\..*$
+    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*$|^*(日|(?i)JP|(?i)Japan).*日用.*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/JP.png
 
   - name: "美国节点"
@@ -422,7 +422,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(美|(?i)US|(?i)States|American).*\D0\..*$
+    filter: ^(?!.*((?i)emby)).*(美|(?i)US|(?i)States|American).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/US.png
 
   # 屏蔽了日本地区的低倍率节点
@@ -432,7 +432,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby|(?i)steam|🇯🇵|日|(?i)JP|(?i)Japan)).*\D0\..*$
+    filter: ^(?!.*((?i)emby|(?i)steam|🇯🇵|日|(?i)JP|(?i)Japan)).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/Emby.png
 
 rule-providers:
