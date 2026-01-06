@@ -359,7 +359,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby|(?i)steam)).*$
+    filter: ^(?!.*((?i)emby|(?i)steam)).*\D0\..*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/Urltest.png
 
   - name: "放任自流"
@@ -368,7 +368,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: (^(?!.*((?i)emby|(?i)steam)).*$)|(^(?!.*(倍|剩余|到期|(?i)emby|\.)).*$)
+    filter: (^(?!.*((?i)emby|(?i)steam)).*\D0\..*$)|(^(?!.*(倍|剩余|到期|(?i)emby|\.)).*$)
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/Available.png
 
   - name: "香港节点"
