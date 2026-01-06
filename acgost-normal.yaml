@@ -1,6 +1,6 @@
-# 没有低倍率节点请使用这个覆写
-# 没有低倍率节点请使用这个覆写
-# 没有低倍率节点请使用这个覆写
+# 只使用低倍率节点请使用这个覆写（cdn加速）
+# 只使用低倍率节点请使用这个覆写（cdn加速）
+# 只使用低倍率节点请使用这个覆写（cdn加速）
 mixed-port: 7890
 ipv6: true
 allow-lan: true
@@ -269,13 +269,13 @@ dns:
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [ 自动选择,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
+    proxies: [ 细水长流,放任自流,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Static.png
 
   - name: "手动选择"
     type: select
     include-all: true
-    filter: ^(?!.*(剩余|到期|(?i)emby)).*$
+    filter: ^(?!.*(剩余|到期|(?i)emby|(?i)steam)).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Manual.png
 
   - name: "黑白名单"
@@ -340,7 +340,7 @@ proxy-groups:
 
   - name: "Emby"
     type: select
-    proxies: [ DIRECT,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择 ]
+    proxies: [ DIRECT,Emby省流,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
@@ -353,13 +353,22 @@ proxy-groups:
     proxies: [ DIRECT,策略选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Speedtest.png
 
-  - name: "自动选择"
+  - name: "细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 100
     include-all: true
-    filter: (^(?!.*((?i)emby|(?i)steam)).*\D0\..*$)|(^(?!.*(倍|剩余|到期|(?i)emby|\.)).*$)
+    filter: ^(?!.*((?i)emby|(?i)steam)).*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Urltest.png
+
+  - name: "放任自流"
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    include-all: true
+    filter: (^(?!.*((?i)emby|(?i)steam)).*$)|(^(?!.*(倍|剩余|到期|(?i)emby|\.)).*$)
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Available.png
 
   - name: "香港节点"
@@ -415,6 +424,16 @@ proxy-groups:
     include-all: true
     filter: ^(?!.*((?i)emby)).*(美|(?i)US|(?i)States|American).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
+
+  # 屏蔽了日本地区的低倍率节点
+  - name: "Emby省流"
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    include-all: true
+    filter: ^(?!.*((?i)emby|(?i)steam|🇯🇵|日|(?i)JP|(?i)Japan)).*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
 rule-providers:
   # 直连规则
@@ -499,7 +518,7 @@ rule-providers:
     path: ./RuleSet/BiliBili.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
 
-  # 国内媒体规则 
+  # 国内媒体规则
   ChinaMedia:
     type: http
     behavior: classical
@@ -602,7 +621,7 @@ rule-providers:
     interval: 86400
     path: ./RuleSet/Speedtest.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
-  
+
   # 国际规则
   Global:
     type: http
