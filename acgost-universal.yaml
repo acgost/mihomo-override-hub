@@ -1,4 +1,6 @@
 # 通用
+# 通用
+# 通用
 mixed-port: 7890
 ipv6: true
 allow-lan: true
