@@ -418,7 +418,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
   # 只包含emby专用和0.01倍率的节点
-  - name: "Emby专用"
+  - name: "「Emby」细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
