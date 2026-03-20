@@ -26,11 +26,11 @@ sniffer:
   enable: true
   sniff: # TLS 和 QUIC 默认如果不配置 ports 默认嗅探 443
     QUIC:
-      ports: [443]
+      ports: [ 443 ]
     TLS:
-      ports: [443, 8443]
+      ports: [ 443, 8443 ]
     HTTP: # 需要嗅探的端口
-      ports: [80, 8080-8880]
+      ports: [ 80, 8080-8880 ]
       override-destination: true
   skip-domain:
     - "Mijia Cloud"
@@ -270,7 +270,7 @@ dns:
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [ 细水长流,放任自流,香港节点,台湾节点,狮城节点,日本节点,韩国节点,美国节点,手动选择 ]
+    proxies: [ 细水长流, 放任自流, 香港节点, 台湾节点, 狮城节点, 日本节点, 韩国节点, 美国节点, 手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Static.png
 
   - name: "手动选择"
@@ -281,77 +281,77 @@ proxy-groups:
 
   - name: "黑白名单"
     type: select
-    proxies: [ 策略选择,DIRECT ]
+    proxies: [ 策略选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Final.png
 
   - name: "Apple"
     type: select
-    proxies: [ 美国节点,策略选择,DIRECT ]
+    proxies: [ 美国节点, 策略选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Apple.png
 
   - name: "系统更新"
     type: select
-    proxies: [ 美国节点,策略选择,DIRECT,REJECT ]
+    proxies: [ 美国节点, 策略选择, DIRECT, REJECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Adblock.png
 
   - name: "Google"
     type: select
-    proxies: [ 美国节点,策略选择,DIRECT ]
+    proxies: [ 美国节点, 策略选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Google.png
 
   - name: "Microsoft"
     type: select
-    proxies: [ 美国节点,策略选择,DIRECT ]
+    proxies: [ 美国节点, 策略选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Microsoft.png
 
   - name: "OpenAI"
     type: select
-    proxies: [ 狮城节点,日本节点,美国节点,策略选择,DIRECT ]
+    proxies: [ 狮城节点, 日本节点, 美国节点, 策略选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/OpenAI.png
 
   - name: "PayPal"
     type: select
-    proxies: [ 美国节点,DIRECT ]
+    proxies: [ 美国节点, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Paypal.png
 
   - name: "Telegram"
     type: select
-    proxies: [ 策略选择,美国节点,DIRECT ]
+    proxies: [ 策略选择, 美国节点, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Telegram.png
 
   - name: "TikTok"
     type: select
-    proxies: [ 日本节点,韩国节点,台湾节点,狮城节点,香港节点,美国节点,手动选择,DIRECT ]
+    proxies: [ 日本节点, 韩国节点, 台湾节点, 狮城节点, 香港节点, 美国节点, 手动选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/TikTok.png
 
   - name: "YouTube"
     type: select
-    proxies: [ 策略选择,美国节点,DIRECT ]
+    proxies: [ 策略选择, 美国节点, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/YouTube.png
 
   - name: "Disney"
     type: select
-    proxies: [ 狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT ]
+    proxies: [ 狮城节点, 台湾节点, 香港节点, 日本节点, 韩国节点, 美国节点, 手动选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/DisneyPlus.png
 
   - name: "Netflix"
     type: select
-    proxies: [ 狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择,DIRECT ]
+    proxies: [ 狮城节点, 台湾节点, 香港节点, 日本节点, 韩国节点, 美国节点, 手动选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Netflix.png
 
   - name: "Emby"
     type: select
-    proxies: [ DIRECT,「Emby」细水长流,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择 ]
+    proxies: [ DIRECT, 「Emby」细水长流, 狮城节点, 台湾节点, 香港节点, 日本节点, 韩国节点, 美国节点, 手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
     type: select
-    proxies: [ DIRECT,香港节点,台湾节点,手动选择 ]
+    proxies: [ DIRECT, 香港节点, 台湾节点, 手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Bili.png
 
   - name: "Speedtest"
     type: select
-    proxies: [ DIRECT,策略选择 ]
+    proxies: [ DIRECT, 策略选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Speedtest.png
 
   - name: "细水长流"
@@ -414,7 +414,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*\D0\..*$|^*(日|(?i)JP|(?i)Japan).*日用.*\D0\..*$
+    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*\D0\..*$|^.*(日|(?i)JP|(?i)Japan).*日用.*\D0\..*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/JP.png
 
   - name: "美国节点"
@@ -686,16 +686,16 @@ rules:
   - DOMAIN-SUFFIX,nodeseek.com,手动选择
   - DOMAIN-KEYWORD,freenom,美国节点
   - IP-CIDR,95.161.76.100/31,REJECT-DROP,no-resolve
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,191.1.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - IP-CIDR,100.64.0.0/10,DIRECT
-  - IP-CIDR,224.0.0.0/4,DIRECT
-  - IP-CIDR,fe80::/10,DIRECT
-  - IP-CIDR,119.28.28.28/32,DIRECT
-  - IP-CIDR,182.254.116.0/24,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,191.1.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+  - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
+  - IP-CIDR,fe80::/10,DIRECT,no-resolve
+  - IP-CIDR,119.28.28.28/32,DIRECT,no-resolve
+  - IP-CIDR,182.254.116.0/24,DIRECT,no-resolve
   - GEOIP,CN,DIRECT
 
   # MATCH 代表没有命中任何规则，所以不需要规则名称
