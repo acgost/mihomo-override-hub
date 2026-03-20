@@ -1,6 +1,6 @@
-# 只使用低倍率节点请使用这个覆写（cdn加速）
-# 只使用低倍率节点请使用这个覆写（cdn加速）
-# 只使用低倍率节点请使用这个覆写（cdn加速）
+# [策略选择]中只有[细水长流]是低倍率节点
+# [策略选择]中只有[细水长流]是低倍率节点
+# [策略选择]中只有[细水长流]是低倍率节点
 mixed-port: 7890
 ipv6: true
 allow-lan: true
@@ -341,7 +341,7 @@ proxy-groups:
 
   - name: "Emby"
     type: select
-    proxies: [ DIRECT,Emby省流,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择 ]
+    proxies: [ DIRECT,[Emby]细水长流,狮城节点,台湾节点,香港节点,日本节点,韩国节点,美国节点,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
@@ -427,7 +427,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
   # 屏蔽了日本地区的低倍率节点
-  - name: "Emby省流"
+  - name: "[Emby]细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
@@ -682,7 +682,6 @@ rules:
   - RULE-SET,ChinaIP,DIRECT
   - DOMAIN-SUFFIX,spaceship.com,DIRECT
   - DOMAIN-SUFFIX,dns.com,DIRECT
-  - DOMAIN-SUFFIX,greatoo.com,DIRECT
   - DOMAIN-SUFFIX,volcengine.com,DIRECT
   - DOMAIN-SUFFIX,nodeseek.com,手动选择
   - DOMAIN-KEYWORD,freenom,美国节点

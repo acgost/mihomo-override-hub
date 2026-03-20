@@ -1,6 +1,6 @@
-# 没有低倍率节点但有emby专用节点请使用这个覆写
-# 没有低倍率节点但有emby专用节点请使用这个覆写
-# 没有低倍率节点但有emby专用节点请使用这个覆写
+# [策略选择]中只有[细水长流]是低倍率节点，且有emby专用节点（节点名称包含emby）
+# [策略选择]中只有[细水长流]是低倍率节点，且有emby专用节点（节点名称包含emby）
+# [策略选择]中只有[细水长流]是低倍率节点，且有emby专用节点（节点名称包含emby）
 mixed-port: 7890
 ipv6: true
 allow-lan: true
@@ -673,7 +673,6 @@ rules:
   - RULE-SET,ChinaIP,DIRECT
   - DOMAIN-SUFFIX,spaceship.com,DIRECT
   - DOMAIN-SUFFIX,dns.com,DIRECT
-  - DOMAIN-SUFFIX,greatoo.com,DIRECT
   - DOMAIN-SUFFIX,volcengine.com,DIRECT
   - DOMAIN-SUFFIX,nodeseek.com,手动选择
   - DOMAIN-KEYWORD,freenom,美国节点

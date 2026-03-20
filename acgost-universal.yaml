@@ -270,7 +270,7 @@ dns:
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [ [全部]细水长流,[全部]放任自流,[香港]细水长流,[香港]放任自流,[台湾]细水长流,[台湾]放任自流,[狮城]细水长流,[狮城]放任自流,[日本]细水长流,[日本]放任自流,[韩国]细水长流,[韩国]放任自流,[美国]细水长流,[美国]放任自流,手动选择 ]
+    proxies: [ [全部]放任自流,[全部]细水长流,[香港]放任自流,[香港]细水长流,[台湾]放任自流,[台湾]细水长流,[狮城]放任自流,[狮城]细水长流,[日本]放任自流,[日本]细水长流,[韩国]放任自流,[韩国]细水长流,[美国]放任自流,[美国]细水长流,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Static.png
 
   - name: "手动选择"
@@ -286,67 +286,67 @@ proxy-groups:
 
   - name: "Apple"
     type: select
-    proxies: [ [美国]细水长流,[美国]放任自流,策略选择,DIRECT ]
+    proxies: [ [美国]放任自流,[美国]细水长流,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Apple.png
 
   - name: "系统更新"
     type: select
-    proxies: [ [美国]细水长流,[美国]放任自流,策略选择,DIRECT,REJECT ]
+    proxies: [ [美国]放任自流,[美国]细水长流,策略选择,DIRECT,REJECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Adblock.png
 
   - name: "Google"
     type: select
-    proxies: [ [美国]细水长流,[美国]放任自流,策略选择,DIRECT ]
+    proxies: [ [美国]放任自流,[美国]细水长流,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Google.png
 
   - name: "Microsoft"
     type: select
-    proxies: [ [美国]细水长流,[美国]放任自流,策略选择,DIRECT ]
+    proxies: [ [美国]放任自流,[美国]细水长流,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Microsoft.png
 
   - name: "OpenAI"
     type: select
-    proxies: [ [狮城]细水长流,[狮城]放任自流,[日本]细水长流,[日本]放任自流,[美国]细水长流,[美国]放任自流,策略选择,DIRECT ]
+    proxies: [ [狮城]放任自流,[狮城]细水长流,[日本]放任自流,[日本]细水长流,[美国]放任自流,[美国]细水长流,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/OpenAI.png
 
   - name: "PayPal"
     type: select
-    proxies: [ [美国]细水长流,[美国]放任自流,DIRECT ]
+    proxies: [ [美国]放任自流,[美国]细水长流,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Paypal.png
 
   - name: "Telegram"
     type: select
-    proxies: [ 策略选择,[美国]细水长流,[美国]放任自流,DIRECT ]
+    proxies: [ 策略选择,[美国]放任自流,[美国]细水长流,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Telegram.png
 
   - name: "TikTok"
     type: select
-    proxies: [ 策略选择,[日本]细水长流,[日本]放任自流,[韩国]细水长流,[韩国]放任自流,[台湾]细水长流,[台湾]放任自流,[狮城]细水长流,[狮城]放任自流,[香港]细水长流,[香港]放任自流,[美国]细水长流,[美国]放任自流,手动选择,DIRECT ]
+    proxies: [ 策略选择,[日本]放任自流,[日本]细水长流,[韩国]放任自流,[韩国]细水长流,[台湾]放任自流,[台湾]细水长流,[狮城]放任自流,[狮城]细水长流,[香港]放任自流,[香港]细水长流,[美国]放任自流,[美国]细水长流,手动选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/TikTok.png
 
   - name: "YouTube"
     type: select
-    proxies: [ [美国]细水长流,[美国]放任自流,策略选择,DIRECT ]
+    proxies: [ [美国]放任自流,[美国]细水长流,策略选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/YouTube.png
 
   - name: "Disney"
     type: select
-    proxies: [ [狮城]细水长流,[狮城]放任自流,[台湾]细水长流,[台湾]放任自流,[香港]细水长流,[香港]放任自流,[日本]细水长流,[日本]放任自流,[韩国]细水长流,[韩国]放任自流,[美国]细水长流,[美国]放任自流,手动选择,DIRECT ]
+    proxies: [ [狮城]放任自流,[狮城]细水长流,[台湾]放任自流,[台湾]细水长流,[香港]放任自流,[香港]细水长流,[日本]放任自流,[日本]细水长流,[韩国]放任自流,[韩国]细水长流,[美国]放任自流,[美国]细水长流,手动选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/DisneyPlus.png
 
   - name: "Netflix"
     type: select
-    proxies: [ [狮城]细水长流,[狮城]放任自流,[台湾]细水长流,[台湾]放任自流,[香港]细水长流,[香港]放任自流,[日本]细水长流,[日本]放任自流,[韩国]细水长流,[韩国]放任自流,[美国]细水长流,[美国]放任自流,手动选择,DIRECT ]
+    proxies: [ [狮城]放任自流,[狮城]细水长流,[台湾]放任自流,[台湾]细水长流,[香港]放任自流,[香港]细水长流,[日本]放任自流,[日本]细水长流,[韩国]放任自流,[韩国]细水长流,[美国]放任自流,[美国]细水长流,手动选择,DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Netflix.png
 
   - name: "Emby"
     type: select
-    proxies: [ DIRECT,[Emby]细水长流,[Emby]放任自流,[狮城]细水长流,[狮城]放任自流,[台湾]细水长流,[台湾]放任自流,[香港]细水长流,[香港]放任自流,[日本]细水长流,[日本]放任自流,[韩国]细水长流,[韩国]放任自流,[美国]细水长流,[美国]放任自流,手动选择 ]
+    proxies: [ DIRECT,[Emby]放任自流,[Emby]细水长流,[狮城]放任自流,[狮城]细水长流,[台湾]放任自流,[台湾]细水长流,[香港]放任自流,[香港]细水长流,[日本]放任自流,[日本]细水长流,[韩国]放任自流,[韩国]细水长流,[美国]放任自流,[美国]细水长流,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
     type: select
-    proxies: [ DIRECT,[香港]细水长流,[香港]放任自流,[台湾]细水长流,[台湾]放任自流,手动选择 ]
+    proxies: [ DIRECT,[香港]放任自流,[香港]细水长流,[台湾]放任自流,[台湾]细水长流,手动选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Bili.png
 
   - name: "Speedtest"
@@ -450,7 +450,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*\D0\..*$|^*(日|(?i)JP|(?i)Japan).*日用.*\D0\..*$
+    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*\D0\..*$|^.*(日|(?i)JP|(?i)Japan).*日用.*\D0\..*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/JP.png
 
   - name: "[日本]放任自流"
@@ -459,7 +459,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*$|^*(日|(?i)JP|(?i)Japan).*日用.*$
+    filter: ^(?!.*(日用|(?i)emby)).*(日|(?i)JP|(?i)Japan).*$|^.*(日|(?i)JP|(?i)Japan).*日用.*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/JP.png
 
   - name: "[美国]细水长流"
@@ -746,7 +746,6 @@ rules:
   - RULE-SET,ChinaIP,DIRECT
   - DOMAIN-SUFFIX,spaceship.com,DIRECT
   - DOMAIN-SUFFIX,dns.com,DIRECT
-  - DOMAIN-SUFFIX,greatoo.com,DIRECT
   - DOMAIN-SUFFIX,volcengine.com,DIRECT
   - DOMAIN-SUFFIX,nodeseek.com,手动选择
   - DOMAIN-KEYWORD,freenom,[美国]放任自流
