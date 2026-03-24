@@ -13,7 +13,6 @@ external-controller: 0.0.0.0:9090
 secret: "@@Mihomo12315123"
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
-find-process-mode: strict
 global-client-fingerprint: chrome
 hosts:
   'mtalk.google.com': 108.177.125.188
@@ -40,9 +39,7 @@ tun:
   stack: mixed
   dns-hijack:
     - "any:53"
-    - "tcp://any:53"
   auto-route: true
-  auto-redirect: true
   auto-detect-interface: true
 dns:
   enable: true
@@ -125,19 +122,13 @@ dns:
     - "*.xiami.com"
     - "*.music.migu.cn"
     - music.migu.cn
-    - "+.msftconnecttest.com"
-    - "+.msftncsi.com"
-    - localhost.ptlogin2.qq.com
     - localhost.sec.qq.com
     - "+.qq.com"
     - "+.tencent.com"
-    - "+.srv.nintendo.net"
     - "*.n.n.srv.nintendo.net"
     - "+.cdn.nintendo.net"
-    - "+.stun.playstation.net"
     - xbox.*.*.microsoft.com
     - "*.*.xboxlive.com"
-    - xbox.*.microsoft.com
     - xnotify.xboxlive.com
     - "+.battlenet.com.cn"
     - "+.wotgame.cn"
@@ -181,90 +172,29 @@ dns:
     - "+.n0808.com"
     - "+.uu.163.com"
     - ps.res.netease.com
-nameserver-policy:
-  'www.baidu.com': '114.114.114.114'
-  '+.internal.crop.com': '10.0.0.1'
-  'geosite:cn': https://doh.pub/dns-query
-  'geosite:gfw': # 使用 nameserver-policy 替代原有的 fallback-filter.geosite
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
+  nameserver-policy:
+    'geosite:cn':
+      - 223.5.5.5 # 替换掉不可控的 system
+      - 119.29.29.29
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    'www.baidu.com': '114.114.114.114'
+    '+.internal.crop.com': '10.0.0.1'
+    'geosite:gfw': # 使用 nameserver-policy 替代原有的 fallback-filter.geosite
+      - https://dns.cloudflare.com/dns-query
+      - https://dns.google/dns-query
   nameserver:
-    - 223.5.5.5 # 替换掉不可控的 system
-    - 119.29.29.29
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-  fallback:
-    # 尽量使用主流且稳定的 DoH/DoT
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
-    - tls://8.8.4.4
-    - tls://1.1.1.1
+  # 尽量使用主流且稳定的 DoH/DoT
+  - https://dns.cloudflare.com/dns-query
+  - https://dns.google/dns-query
+  - tls://8.8.4.4
+  - tls://1.1.1.1
   proxy-server-nameserver:
     # 必须使用最快、最稳定的纯 IP DNS 来解析节点域名
     - 223.5.5.5
     - 119.29.29.29
     - 8.8.8.8
     - 1.1.1.1
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
-    # 已经移除了 geosite: [gfw]
-    domain:
-      - '+.ai.com'
-      - '+.algolia.net'
-      - '+.anthropic.com'
-      - '+.argotunnel.com'
-      - '+.arkoselabs.com'
-      - '+.auth0.com'
-      - '+.azure.com'
-      - '+.azureedge.net'
-      - '+.bing.com'
-      - '+.bingapis.com'
-      - '+.bugsnag.com'
-      - '+.chatgpt.com'
-      - '+.claude.ai'
-      - '+.cloudflare.net'
-      - '+.cloudflareinsights.com'
-      - '+.cohere.ai'
-      - '+.docker.com'
-      - '+.docker.io'
-      - '+.facebook.com'
-      - '+.github.com'
-      - '+.githubusercontent.com'
-      - '+.google'
-      - '+.google.com'
-      - '+.google.dev'
-      - '+.googleapis.cn'
-      - '+.googlevideo.com'
-      - '+.identrust.com'
-      - '+.instagram.com'
-      - '+.intercom.io'
-      - '+.live.com'
-      - '+.livekit.cloud'
-      - '+.meta.ai'
-      - '+.microsoft.com'
-      - '+.microsoftapp.net'
-      - '+.minecraft.net'
-      - '+.msn.com'
-      - '+.openai.com'
-      - '+.poe.com'
-      - '+.segment.com'
-      - '+.segment.io'
-      - '+.sentry.io'
-      - '+.synn.cc'
-      - '+.stripe.com'
-      - '+.t.me'
-      - '+.tailscale.com'
-      - '+.tailscale.io'
-      - '+.twitter.com'
-      - '+.usefathom.com'
-      - '+.v2ex.com'
-      - '+.windows.net'
-      - '+.wootric.com'
-      - '+.x.com'
-      - '+.youtube.com'
 proxy-groups:
   - name: "策略选择"
     type: select
