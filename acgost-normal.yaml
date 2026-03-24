@@ -13,7 +13,6 @@ external-controller: 0.0.0.0:9090
 secret: "@@Mihomo12315123"
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
-find-process-mode: strict
 global-client-fingerprint: chrome
 hosts:
   'mtalk.google.com': 108.177.125.188
@@ -40,9 +39,7 @@ tun:
   stack: mixed
   dns-hijack:
     - "any:53"
-    - "tcp://any:53"
   auto-route: true
-  auto-redirect: true
   auto-detect-interface: true
 dns:
   enable: true
@@ -123,19 +120,13 @@ dns:
     - "*.xiami.com"
     - "*.music.migu.cn"
     - music.migu.cn
-    - "+.msftconnecttest.com"
-    - "+.msftncsi.com"
-    - localhost.ptlogin2.qq.com
     - localhost.sec.qq.com
     - "+.qq.com"
     - "+.tencent.com"
-    - "+.srv.nintendo.net"
     - "*.n.n.srv.nintendo.net"
     - "+.cdn.nintendo.net"
-    - "+.stun.playstation.net"
     - xbox.*.*.microsoft.com
     - "*.*.xboxlive.com"
-    - xbox.*.microsoft.com
     - xnotify.xboxlive.com
     - "+.battlenet.com.cn"
     - "+.wotgame.cn"
@@ -180,22 +171,21 @@ dns:
     - "+.uu.163.com"
     - ps.res.netease.com
   nameserver-policy:
+    'geosite:cn':
+      - system
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+      - https://doh.360.cn/dns-query
     'www.baidu.com': '114.114.114.114'
     '+.internal.crop.com': '10.0.0.1'
-    'geosite:cn': https://doh.pub/dns-query
   nameserver:
-    - system
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-    - https://doh.360.cn/dns-query
-  fallback:
-    - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
-    - https://dh-dns.global-idt.net/dns-query
-    - https://doh.apad.pro/dns-query
-    - https://doh.sb/dns-query
-    - https://public.dns.iij.jp/dns-query
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.twnic.tw/dns-query
+  - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
+  - https://dh-dns.global-idt.net/dns-query
+  - https://doh.apad.pro/dns-query
+  - https://doh.sb/dns-query
+  - https://public.dns.iij.jp/dns-query
+  - https://dns.cloudflare.com/dns-query
+  - https://dns.twnic.tw/dns-query
   proxy-server-nameserver:
     - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
     - https://dh-dns.global-idt.net/dns-query
@@ -206,67 +196,6 @@ dns:
     - https://dns.twnic.tw/dns-query
     - https://dns.google/dns-query
     - tls://one.one.one.one
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.ai.com'
-      - '+.algolia.net'
-      - '+.anthropic.com'
-      - '+.argotunnel.com'
-      - '+.arkoselabs.com'
-      - '+.auth0.com'
-      - '+.azure.com'
-      - '+.azureedge.net'
-      - '+.bing.com'
-      - '+.bingapis.com'
-      - '+.bugsnag.com'
-      - '+.chatgpt.com'
-      - '+.claude.ai'
-      - '+.cloudflare.net'
-      - '+.cloudflareinsights.com'
-      - '+.cohere.ai'
-      - '+.docker.com'
-      - '+.docker.io'
-      - '+.facebook.com'
-      - '+.github.com'
-      - '+.githubusercontent.com'
-      - '+.google'
-      - '+.google.com'
-      - '+.google.dev'
-      - '+.googleapis.cn'
-      - '+.googlevideo.com'
-      - '+.identrust.com'
-      - '+.instagram.com'
-      - '+.intercom.io'
-      - '+.live.com'
-      - '+.livekit.cloud'
-      - '+.meta.ai'
-      - '+.microsoft.com'
-      - '+.microsoftapp.net'
-      - '+.minecraft.net'
-      - '+.msn.com'
-      - '+.openai.com'
-      - '+.poe.com'
-      - '+.segment.com'
-      - '+.segment.io'
-      - '+.sentry.io'
-      - '+.synn.cc'
-      - '+.stripe.com'
-      - '+.t.me'
-      - '+.tailscale.com'
-      - '+.tailscale.io'
-      - '+.twitter.com'
-      - '+.usefathom.com'
-      - '+.v2ex.com'
-      - '+.windows.net'
-      - '+.wootric.com'
-      - '+.x.com'
-      - '+.youtube.com'
 proxy-groups:
   - name: "策略选择"
     type: select
