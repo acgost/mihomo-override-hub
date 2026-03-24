@@ -46,11 +46,13 @@ tun:
   auto-detect-interface: true
 dns:
   enable: true
-  ipv6: true
+  ipv6: false # 建议先关闭，排查是否是 IPv6 引起的超时
   respect-rules: true
   listen: 0.0.0.0:53
   default-nameserver:
-    - 8.8.4.4
+    - 223.5.5.5
+    - 114.114.114.114
+    - 8.8.8.8
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
@@ -179,40 +181,36 @@ dns:
     - "+.n0808.com"
     - "+.uu.163.com"
     - ps.res.netease.com
-  nameserver-policy:
-    'www.baidu.com': '114.114.114.114'
-    '+.internal.crop.com': '10.0.0.1'
-    'geosite:cn': https://doh.pub/dns-query
+nameserver-policy:
+  'www.baidu.com': '114.114.114.114'
+  '+.internal.crop.com': '10.0.0.1'
+  'geosite:cn': https://doh.pub/dns-query
+  'geosite:gfw': # 使用 nameserver-policy 替代原有的 fallback-filter.geosite
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
   nameserver:
-    - system
+    - 223.5.5.5 # 替换掉不可控的 system
+    - 119.29.29.29
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
-    - https://doh.360.cn/dns-query
   fallback:
-    - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
-    - https://dh-dns.global-idt.net/dns-query
-    - https://doh.apad.pro/dns-query
-    - https://doh.sb/dns-query
-    - https://public.dns.iij.jp/dns-query
+    # 尽量使用主流且稳定的 DoH/DoT
     - https://dns.cloudflare.com/dns-query
-    - https://dns.twnic.tw/dns-query
-  proxy-server-nameserver:
-    - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
-    - https://dh-dns.global-idt.net/dns-query
-    - https://doh.apad.pro/dns-query
-    - https://doh.sb/dns-query
-    - https://public.dns.iij.jp/dns-query
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.twnic.tw/dns-query
     - https://dns.google/dns-query
-    - tls://one.one.one.one
+    - tls://8.8.4.4
+    - tls://1.1.1.1
+  proxy-server-nameserver:
+    # 必须使用最快、最稳定的纯 IP DNS 来解析节点域名
+    - 223.5.5.5
+    - 119.29.29.29
+    - 8.8.8.8
+    - 1.1.1.1
   fallback-filter:
     geoip: true
     geoip-code: CN
-    geosite:
-      - gfw
     ipcidr:
       - 240.0.0.0/4
+    # 已经移除了 geosite: [gfw]
     domain:
       - '+.ai.com'
       - '+.algolia.net'
