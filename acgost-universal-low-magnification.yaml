@@ -36,9 +36,11 @@ sniffer:
     - "+.push.apple.com"
 tun:
   enable: true
-  stack: mixed
+  stack: system
+  strict-route: true
   dns-hijack:
     - "any:53"
+    - "tcp://any:53"
   auto-route: true
   auto-detect-interface: true
 dns:
