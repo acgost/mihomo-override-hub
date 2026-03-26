@@ -171,13 +171,9 @@ dns:
     - "+.uu.163.com"
     - ps.res.netease.com
   nameserver-policy:
-    'geosite:cn':
-      - system
-      - https://dns.alidns.com/dns-query
-      - https://doh.pub/dns-query
-      - https://doh.360.cn/dns-query
     'www.baidu.com': '114.114.114.114'
     '+.internal.crop.com': '10.0.0.1'
+    'geosite:cn': https://doh.pub/dns-query
   nameserver:
   - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
   - https://dh-dns.global-idt.net/dns-query
