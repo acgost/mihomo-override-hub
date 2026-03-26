@@ -13,21 +13,23 @@ external-controller: 0.0.0.0:9090
 secret: "@@Mihomo12315123"
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
-global-client-fingerprint: chrome
 hosts:
   'mtalk.google.com': 108.177.125.188
   'dl.google.com': 180.163.151.161
   'dl.l.google.com': 180.163.151.161
-# profile:
-#   store-selected: true
-#   store-fake-ip: true
+profile:
+  store-selected: true
+  store-fake-ip: true
 sniffer:
   enable: true
-  sniff:
-    TLS:
-      ports: [443, 8443]
-    HTTP:
-      ports: [80, 8080-8880]
+  sniffing:
+    - tls
+    - http
+  port-whitelist:
+    - "80"
+    - "443"
+    - "8443"
+    - "8080-8880"
   skip-domain:
     - "Mijia Cloud"
     - "+.push.apple.com"
@@ -173,16 +175,12 @@ dns:
     - "+.uu.163.com"
     - ps.res.netease.com
   nameserver-policy:
-    'geosite:cn':
-      - system
-      - https://dns.alidns.com/dns-query
-      - https://doh.pub/dns-query
-      - https://doh.360.cn/dns-query
     'www.baidu.com': '114.114.114.114'
     '+.internal.crop.com': '10.0.0.1'
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+    - https://doh.360.cn/dns-query
   fallback:
     - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
     - https://dh-dns.global-idt.net/dns-query
