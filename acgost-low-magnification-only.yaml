@@ -309,7 +309,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(港|(?i)HK|(?i)Hong).*\D0\..*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:港|hk|hong))(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/HK.png
 
   - name: "台湾节点"
