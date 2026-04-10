@@ -354,7 +354,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(美|(?i)US|(?i)States|American).*\D0\..*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:美|us|america))(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
   # 屏蔽了日本地区的低倍率节点

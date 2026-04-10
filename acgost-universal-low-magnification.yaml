@@ -399,7 +399,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(美|(?i)US|(?i)States|American).*\D0\..*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:美|us|america))(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
   - name: "「美国」放任自流"
@@ -408,7 +408,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(美|(?i)US|(?i)States|American).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.])))(?=.*(?i:美|us|america)).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
   # 屏蔽了日本地区的低倍率节点
