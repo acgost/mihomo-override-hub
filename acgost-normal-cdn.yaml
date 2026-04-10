@@ -312,7 +312,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*((?i)emby)).*(台|(?i)TW|(?i)Taiwan).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.])))(?=.*(?i:台|tw|tai)).*$
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/TW.png
 
   - name: "狮城节点"
