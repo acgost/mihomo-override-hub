@@ -221,7 +221,7 @@ proxy-groups:
 
   - name: "Google"
     type: select
-    proxies: [ 美国节点, 策略选择, DIRECT ]
+    proxies: [ 香港节点, 美国节点, 策略选择, DIRECT ]
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/Google.png
 
   - name: "Microsoft"
@@ -251,7 +251,7 @@ proxy-groups:
 
   - name: "YouTube"
     type: select
-    proxies: [ 策略选择, 美国节点, DIRECT ]
+    proxies: [ 香港节点, 美国节点, 策略选择, DIRECT ]
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@refs/heads/master/Color/YouTube.png
 
   - name: "Disney"

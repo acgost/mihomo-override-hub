@@ -226,7 +226,7 @@ proxy-groups:
 
   - name: "Google"
     type: select
-    proxies: [ 「美国」放任自流, 「美国」细水长流, 策略选择, DIRECT ]
+    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」放任自流, 「美国」细水长流, 策略选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Google.png
 
   - name: "Microsoft"
@@ -256,7 +256,7 @@ proxy-groups:
 
   - name: "YouTube"
     type: select
-    proxies: [ 「美国」放任自流, 「美国」细水长流, 策略选择, DIRECT ]
+    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」放任自流, 「美国」细水长流, 策略选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/YouTube.png
 
   - name: "Disney"
