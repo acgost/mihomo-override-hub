@@ -463,7 +463,7 @@ proxy-groups:
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
-  # 屏蔽了日本地区的低倍率节点
+  # 屏蔽了港日美地区的全部节点
   - name: "「Emby」细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
@@ -475,7 +475,7 @@ proxy-groups:
     exclude-filter: '(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america)'
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
-  # 屏蔽了日本地区的全部节点
+  # 屏蔽了港日美地区的全部节点
   - name: "「Emby」放任自流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204

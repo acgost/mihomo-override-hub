@@ -17,12 +17,20 @@ global-client-fingerprint: chrome
 hosts:
   'mtalk.google.com': 108.177.125.188
   'dl.google.com': 180.163.151.161
-  'dl.l.google.com': 180.163.151.161
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+
 profile:
   store-selected: true
   store-fake-ip: true
 sniffer:
   enable: true
+  override-destination: true
   sniff: # TLS 和 QUIC 默认如果不配置 ports 默认嗅探 443
     QUIC:
       ports: [ 443 ]
@@ -30,7 +38,6 @@ sniffer:
       ports: [ 443, 8443 ]
     HTTP: # 需要嗅探的端口
       ports: [ 80, 8080-8880 ]
-      override-destination: true
   skip-domain:
     - "Mijia Cloud"
     - "+.push.apple.com"
@@ -45,6 +52,7 @@ tun:
   auto-detect-interface: true
 dns:
   enable: true
+  independent-cache: true
   ipv6: true
   respect-rules: true
   listen: 0.0.0.0:53
@@ -181,23 +189,16 @@ dns:
     'www.baidu.com': '114.114.114.114'
     '+.internal.crop.com': '10.0.0.1'
   nameserver:
-  - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
-  - https://dh-dns.global-idt.net/dns-query
-  - https://doh.apad.pro/dns-query
-  - https://doh.sb/dns-query
-  - https://public.dns.iij.jp/dns-query
-  - https://dns.cloudflare.com/dns-query
-  - https://dns.twnic.tw/dns-query
+  - "https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query#策略选择"
+  - "https://dh-dns.global-idt.net/dns-query#策略选择"
+  - "https://doh.apad.pro/dns-query#策略选择"
+  - "https://doh.sb/dns-query#策略选择"
+  - "https://public.dns.iij.jp/dns-query#策略选择"
+  - "https://dns.cloudflare.com/dns-query#策略选择"
+  - "https://dns.twnic.tw/dns-query#策略选择"
   proxy-server-nameserver:
-    - https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query
-    - https://dh-dns.global-idt.net/dns-query
-    - https://doh.apad.pro/dns-query
-    - https://doh.sb/dns-query
-    - https://public.dns.iij.jp/dns-query
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.twnic.tw/dns-query
-    - https://dns.google/dns-query
-    - tls://one.one.one.one
+    - https://223.5.5.5/dns-query
+    - https://223.6.6.6/dns-query
 proxy-groups:
   - name: "策略选择"
     type: select
@@ -207,7 +208,7 @@ proxy-groups:
   - name: "手动选择"
     type: select
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Manual.png
 
   - name: "黑白名单"
@@ -300,7 +301,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Available.png
 
   - name: "「香港」细水长流"
@@ -318,7 +319,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:港|hk|hong))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:港|hk|hong))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/HK.png
 
   - name: "「台湾」细水长流"
@@ -336,7 +337,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:台|tw|tai))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:台|tw|tai))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/TW.png
 
   - name: "「狮城」细水长流"
@@ -354,7 +355,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:新|狮城|sg|sing))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:新|狮城|sg|sing))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/SG.png
 
   - name: "「韩国」细水长流"
@@ -372,7 +373,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:韩|kr|korea))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:韩|kr|korea))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/KR.png
 
   - name: "「日本」细水长流"
@@ -390,7 +391,7 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:日|jp|japan))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:日|jp|japan))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/JP.png
 
   - name: "「美国」细水长流"
@@ -408,27 +409,27 @@ proxy-groups:
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:美|us|america))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby))(?=.*(?i:美|us|america))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
-  # 屏蔽了日本地区的低倍率节点
+  # 屏蔽了港日美地区的低倍率节点
   - name: "「Emby」细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby|日|jp|japan))(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america))(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
-  # 屏蔽了日本地区的全部节点
+  # 屏蔽了港日美地区的全部节点
   - name: "「Emby」放任自流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 100
     include-all: true
-    filter: ^(?!.*(?i:剩余|到期|重置|emby|日|jp|japan))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]|[1-9]\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]|[1-9]\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
+    filter: ^(?!.*(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america))(?:(?=.*(?i:x\s*0\.\d+|0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))|(?!.*(?i:x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))))).*$
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
 rule-providers:
