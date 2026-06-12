@@ -227,6 +227,7 @@ proxy-groups:
   - name: "策略选择"
     type: select
     proxies: [ 「全部」细水长流, 「全部」放任自流, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择 ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Static.png
 
   - name: "手动选择"
@@ -235,14 +236,10 @@ proxy-groups:
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Manual.png
 
-  - name: "黑白名单"
-    type: select
-    proxies: [ 策略选择, DIRECT ]
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Final.png
-
   - name: "Apple"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT ]
+    proxies: [ DIRECT, 「美国」细水长流, 「美国」放任自流 ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Apple.png
 
   - name: "系统更新"
@@ -252,38 +249,45 @@ proxy-groups:
 
   - name: "Google"
     type: select
-    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT ]
+    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流 ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Google.png
+
+  - name: "YouTube"
+    type: select
+    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择 ]
+
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/YouTube.png
 
   - name: "Microsoft"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT ]
+    proxies: [ 策略选择, 「美国」细水长流, 「美国」放任自流, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, DIRECT ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Microsoft.png
 
   - name: "OpenAI"
     type: select
-    proxies: [ 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT ]
+    proxies: [ 策略选择, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/OpenAI.png
 
   - name: "PayPal"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, DIRECT ]
+    proxies: [ 「美国」细水长流, 「美国」放任自流, 手动选择 ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Paypal.png
 
   - name: "Telegram"
     type: select
-    proxies: [ 策略选择, 「美国」细水长流, 「美国」放任自流, DIRECT ]
+    proxies: [ 策略选择, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流 ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Telegram.png
 
   - name: "TikTok"
     type: select
     proxies: [ 策略选择, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/TikTok.png
 
-  - name: "YouTube"
-    type: select
-    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT ]
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/YouTube.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/TikTok.png
 
   - name: "Disney"
     type: select
@@ -292,23 +296,37 @@ proxy-groups:
 
   - name: "Netflix"
     type: select
-    proxies: [ 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT, 策略选择 ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Netflix.png
 
   - name: "Emby"
     type: select
-    proxies: [ DIRECT, 「Emby」细水长流, 「Emby」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择 ]
+    proxies: [ 「Emby」细水长流, 「Emby」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   - name: "BiliBili"
     type: select
     proxies: [ DIRECT, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 手动选择 ]
+
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Bili.png
 
+
+  - name: "Game"
+    type: select
+    proxies: [ DIRECT, 策略选择, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流 ]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Game.png
   - name: "Speedtest"
     type: select
     proxies: [ DIRECT, 策略选择 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Speedtest.png
+
+  - name: "黑白名单"
+    type: select
+    proxies: [ TikTok, 策略选择, DIRECT ]
+
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Final.png
 
   - name: "「全部」细水长流"
     type: url-test
@@ -397,28 +415,6 @@ proxy-groups:
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/SG.png
 
-  - name: "「韩国」细水长流"
-    type: url-test
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    filter: '(?i)(?=.*(?:韩|kr|korea))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/KR.png
-
-  - name: "「韩国」放任自流"
-    type: url-test
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    filter: '(?i:韩|kr|korea)'
-    exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/KR.png
-
   - name: "「日本」细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
@@ -440,6 +436,28 @@ proxy-groups:
     filter: '(?i:日|jp|japan)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/JP.png
+
+  - name: "「韩国」细水长流"
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
+    interval: 300
+    tolerance: 100
+    include-all: true
+    filter: '(?i)(?=.*(?:韩|kr|korea))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
+    exclude-filter: '(?i:剩余|到期|重置|emby)'
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/KR.png
+
+  - name: "「韩国」放任自流"
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
+    interval: 300
+    tolerance: 100
+    include-all: true
+    filter: '(?i:韩|kr|korea)'
+    exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
+    icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/KR.png
 
   - name: "「美国」细水长流"
     type: url-test
@@ -464,6 +482,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/US.png
 
   # 屏蔽了港日美地区的全部节点
+
   - name: "「Emby」细水长流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
@@ -476,6 +495,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Emby.png
 
   # 屏蔽了港日美地区的全部节点
+
   - name: "「Emby」放任自流"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
@@ -587,6 +607,35 @@ rule-providers:
     interval: 86400
     path: ./RuleSet/ChinaMedia.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+
+  # 游戏规则
+  Epic:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Epic.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml
+    interval: 86400
+
+  Sony:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Sony.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.yaml
+    interval: 86400
+
+  Steam:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Steam.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
+    interval: 86400
+
+  Nintendo:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Nintendo.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml
+    interval: 86400
 
   # 国际媒体规则
   GlobalMedia:
@@ -740,6 +789,10 @@ rules:
   - RULE-SET,Netflix,Netflix
   - RULE-SET,Emby,Emby
   - RULE-SET,BiliBili,BiliBili
+  - RULE-SET,Epic,Game
+  - RULE-SET,Sony,Game
+  - RULE-SET,Steam,Game
+  - RULE-SET,Nintendo,Game
   - RULE-SET,ChinaMedia,DIRECT
   - RULE-SET,GlobalMedia,策略选择
   - RULE-SET,PayPal,PayPal
