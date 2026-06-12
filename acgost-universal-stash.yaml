@@ -285,7 +285,6 @@ proxy-groups:
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color/Bili.png
 
-
   - name: "Game"
     type: select
     proxies: [ DIRECT, 策略选择, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流 ]
@@ -760,3 +759,4 @@ rules:
 
   # MATCH 代表没有命中任何规则，所以不需要规则名称
   - MATCH,黑白名单
+
