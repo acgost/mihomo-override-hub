@@ -220,7 +220,7 @@ dns:
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [ 「全部」细水长流, 「全部」放任自流, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择 ]
+    proxies: [ 「全部」延迟优先, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Static.png
 
@@ -232,83 +232,83 @@ proxy-groups:
 
   - name: "Apple"
     type: select
-    proxies: [ DIRECT, 「美国」细水长流, 「美国」放任自流 ]
+    proxies: [ DIRECT, 「美国」延迟优先 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Apple.png
 
   - name: "系统更新"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT, REJECT ]
+    proxies: [ 「美国」延迟优先, 策略选择, DIRECT, REJECT ]
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Adblock.png
 
   - name: "Google"
     type: select
-    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流 ]
+    proxies: [ 「香港」延迟优先, 「美国」延迟优先, 策略选择, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Google.png
 
   - name: "YouTube"
     type: select
-    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择 ]
+    proxies: [ 「香港」延迟优先, 「美国」延迟优先, 策略选择 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/YouTube.png
 
   - name: "Microsoft"
     type: select
-    proxies: [ 策略选择, 「美国」细水长流, 「美国」放任自流, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, DIRECT ]
+    proxies: [ 策略选择, 「美国」延迟优先, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, DIRECT ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Microsoft.png
 
   - name: "OpenAI"
     type: select
-    proxies: [ 策略选择, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 策略选择, 「狮城」延迟优先, 「日本」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
 
   - name: "PayPal"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, 手动选择 ]
+    proxies: [ 「美国」延迟优先, 手动选择 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Paypal.png
 
   - name: "Telegram"
     type: select
-    proxies: [ 策略选择, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流 ]
+    proxies: [ 策略选择, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png
 
   - name: "TikTok"
     type: select
-    proxies: [ 策略选择, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 策略选择, 「日本」延迟优先, 「韩国」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「香港」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/TikTok.png
 
   - name: "Disney"
     type: select
-    proxies: [ 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 「狮城」延迟优先, 「台湾」延迟优先, 「香港」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/DisneyPlus.png
 
   - name: "Netflix"
     type: select
-    proxies: [ 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT, 策略选择 ]
+    proxies: [ 「狮城」延迟优先, 「台湾」延迟优先, 「香港」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择, DIRECT, 策略选择 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Netflix.png
 
   - name: "Emby"
     type: select
-    proxies: [ 「Emby」细水长流, 「Emby」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 「Emby」延迟优先, 「狮城」延迟优先, 「台湾」延迟优先, 「香港」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Emby.png
 
   - name: "BiliBili"
     type: select
-    proxies: [ DIRECT, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 手动选择 ]
+    proxies: [ DIRECT, 「香港」延迟优先, 「台湾」延迟优先, 手动选择 ]
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Bili.png
 
   - name: "Game"
     type: select
-    proxies: [ DIRECT, 策略选择, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流 ]
+    proxies: [ DIRECT, 策略选择, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先 ]
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/GAME.png
   - name: "Speedtest"
     type: select
@@ -321,18 +321,7 @@ proxy-groups:
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Final.png
 
-  - name: "「全部」细水长流"
-    type: url-test
-    filter: '(?i:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Urltest.png
-
-  - name: "「全部」放任自流"
+  - name: "「全部」延迟优先"
     type: url-test
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     url: https://cp.cloudflare.com/generate_204
@@ -342,18 +331,7 @@ proxy-groups:
     include-all: true
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Available.png
 
-  - name: "「香港」细水长流"
-    type: url-test
-    filter: '(?i)(?=.*(?:港|hk|hong))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/HK.png
-
-  - name: "「香港」放任自流"
+  - name: "「香港」延迟优先"
     type: url-test
     filter: '(?i:港|hk|hong)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
@@ -364,18 +342,7 @@ proxy-groups:
     include-all: true
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/HK.png
 
-  - name: "「台湾」细水长流"
-    type: url-test
-    filter: '(?i)(?=.*(?:台|tw|tai))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/TW.png
-
-  - name: "「台湾」放任自流"
+  - name: "「台湾」延迟优先"
     type: url-test
     filter: '(?i:台|tw|tai)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
@@ -386,18 +353,7 @@ proxy-groups:
     include-all: true
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/TW.png
 
-  - name: "「狮城」细水长流"
-    type: url-test
-    filter: '(?i)(?=.*(?:新|狮城|sg|sing))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/SG.png
-
-  - name: "「狮城」放任自流"
+  - name: "「狮城」延迟优先"
     type: url-test
     filter: '(?i:新|狮城|sg|sing)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
@@ -408,18 +364,7 @@ proxy-groups:
     include-all: true
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/SG.png
 
-  - name: "「日本」细水长流"
-    type: url-test
-    filter: '(?i)(?=.*(?:日|jp|japan))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/JP.png
-
-  - name: "「日本」放任自流"
+  - name: "「日本」延迟优先"
     type: url-test
     filter: '(?i:日|jp|japan)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
@@ -430,18 +375,7 @@ proxy-groups:
     include-all: true
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/JP.png
 
-  - name: "「韩国」细水长流"
-    type: url-test
-    filter: '(?i)(?=.*(?:韩|kr|korea))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/KR.png
-
-  - name: "「韩国」放任自流"
+  - name: "「韩国」延迟优先"
     type: url-test
     filter: '(?i:韩|kr|korea)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
@@ -452,18 +386,7 @@ proxy-groups:
     include-all: true
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/KR.png
 
-  - name: "「美国」细水长流"
-    type: url-test
-    filter: '(?i)(?=.*(?:美|us|america))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/US.png
-
-  - name: "「美国」放任自流"
+  - name: "「美国」延迟优先"
     type: url-test
     filter: '(?i:美|us|america)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
@@ -476,20 +399,9 @@ proxy-groups:
 
   # 屏蔽了港日美地区的低倍率节点
 
-  - name: "「Emby」细水长流"
-    type: url-test
-    filter: '(?i:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))'
-    exclude-filter: '(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america)'
-    url: https://cp.cloudflare.com/generate_204
-    expected-status: 204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Emby.png
-
   # 屏蔽了港日美地区的全部节点
 
-  - name: "「Emby」放任自流"
+  - name: "「Emby」延迟优先"
     type: url-test
     exclude-filter: '(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     url: https://cp.cloudflare.com/generate_204
@@ -770,7 +682,7 @@ rules:
   - RULE-SET,Microsoft,Microsoft
   - RULE-SET,OpenAI,OpenAI
   - RULE-SET,Cloudflare,策略选择
-  - RULE-SET,Oracle,「美国」放任自流
+  - RULE-SET,Oracle,「美国」延迟优先
   - RULE-SET,Telegram,Telegram
   - RULE-SET,Speedtest,Speedtest
   - RULE-SET,Global,策略选择
@@ -780,7 +692,7 @@ rules:
   - DOMAIN-SUFFIX,dns.com,DIRECT
   - DOMAIN-SUFFIX,volcengine.com,DIRECT
   - DOMAIN-SUFFIX,nodeseek.com,手动选择
-  - DOMAIN-KEYWORD,freenom,「美国」放任自流
+  - DOMAIN-KEYWORD,freenom,「美国」延迟优先
   - IP-CIDR,95.161.76.100/31,REJECT-DROP,no-resolve
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
   - IP-CIDR,191.1.0.0/16,DIRECT,no-resolve

@@ -1,22 +1,22 @@
-# 通用
-# 通用
-# 通用
+# 通用（低倍率优先）
 mixed-port: 7890
 ipv6: true
 allow-lan: true
 unified-delay: true
 tcp-concurrent: true
-#bind-address: '*'
-mode: Rule
-log-level: silent
+# bind-address: '*'
+mode: rule
+log-level: warning
 external-controller: 0.0.0.0:9090
 secret: "@@Mihomo12315123"
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+etag-support: true
 global-client-fingerprint: chrome
 hosts:
   'mtalk.google.com': 108.177.125.188
   'dl.google.com': 180.163.151.161
+  'dl.l.google.com': 180.163.151.161
 geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
@@ -30,36 +30,53 @@ profile:
   store-fake-ip: true
 sniffer:
   enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
   override-destination: true
-  sniff: # TLS 和 QUIC 默认如果不配置 ports 默认嗅探 443
-    QUIC:
-      ports: [ 443 ]
+  sniff:
+    HTTP:
+      ports: [ 80, 8080-8880 ]
     TLS:
       ports: [ 443, 8443 ]
-    HTTP: # 需要嗅探的端口
-      ports: [ 80, 8080-8880 ]
+    QUIC:
+      ports: [ 443, 8443 ]
   skip-domain:
     - "Mijia Cloud"
     - "+.push.apple.com"
+    - "+.lan"
+    - "+.local"
 tun:
   enable: true
-  stack: system
+  stack: mixed
   strict-route: true
   dns-hijack:
     - "any:53"
     - "tcp://any:53"
   auto-route: true
   auto-detect-interface: true
+  route-exclude-address:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+    - 169.254.0.0/16
+    - fc00::/7
+    - fe80::/10
 dns:
   enable: true
   independent-cache: true
+  cache-algorithm: arc
+  prefer-h3: false
   ipv6: true
   respect-rules: true
   listen: 0.0.0.0:53
   default-nameserver:
-    - 8.8.4.4
+    - 223.5.5.5
+    - 223.6.6.6
+    - 1.1.1.1
+    - 1.0.0.1
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
   fake-ip-filter:
     - localhost.ptlogin2.qq.com
     - '+.srv.nintendo.net'
@@ -181,116 +198,120 @@ dns:
     - "+.uu.163.com"
     - ps.res.netease.com
   nameserver-policy:
-    'geosite:cn':
+    'geosite:private':
       - system
+    'geosite:cn':
+      - https://223.5.5.5/dns-query
+      - https://223.6.6.6/dns-query
       - https://dns.alidns.com/dns-query
       - https://doh.pub/dns-query
       - https://doh.360.cn/dns-query
-    'www.baidu.com': '114.114.114.114'
-    '+.internal.crop.com': '10.0.0.1'
   nameserver:
-  - "https://jp.beta.xns.one/018e5e73-7646-7672-d276-3f1bfe21474d/dns-query#策略选择"
-  - "https://dh-dns.global-idt.net/dns-query#策略选择"
-  - "https://doh.apad.pro/dns-query#策略选择"
-  - "https://doh.sb/dns-query#策略选择"
-  - "https://public.dns.iij.jp/dns-query#策略选择"
-  - "https://dns.cloudflare.com/dns-query#策略选择"
-  - "https://dns.twnic.tw/dns-query#策略选择"
+    - "https://1.1.1.1/dns-query#策略选择"
+    - "https://1.0.0.1/dns-query#策略选择"
+    - "https://dns.quad9.net/dns-query#策略选择"
   proxy-server-nameserver:
     - https://223.5.5.5/dns-query
     - https://223.6.6.6/dns-query
+  direct-nameserver:
+    - https://223.5.5.5/dns-query
+    - https://223.6.6.6/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+    - https://doh.360.cn/dns-query
+  direct-nameserver-follow-policy: true
 proxy-groups:
   - name: "策略选择"
     type: select
-    proxies: [ 「全部」细水长流, 「全部」放任自流, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择 ]
+    proxies: [ 「全部」延迟优先, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png
 
   - name: "手动选择"
     type: select
-    exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     include-all: true
+    exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
 
   - name: "Apple"
     type: select
-    proxies: [ DIRECT, 「美国」细水长流, 「美国」放任自流 ]
+    proxies: [ DIRECT, 「美国」延迟优先 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png
 
   - name: "系统更新"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT, REJECT ]
+    proxies: [ 「美国」延迟优先, 策略选择, DIRECT, REJECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Adblock.png
 
   - name: "Google"
     type: select
-    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流 ]
+    proxies: [ 「香港」延迟优先, 「美国」延迟优先, 策略选择, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
 
   - name: "YouTube"
     type: select
-    proxies: [ 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 策略选择 ]
+    proxies: [ 「香港」延迟优先, 「美国」延迟优先, 策略选择 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/YouTube.png
 
   - name: "Microsoft"
     type: select
-    proxies: [ 策略选择, 「美国」细水长流, 「美国」放任自流, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, DIRECT ]
+    proxies: [ 策略选择, 「美国」延迟优先, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, DIRECT ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Microsoft.png
 
   - name: "OpenAI"
     type: select
-    proxies: [ 策略选择, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 策略选择, 「狮城」延迟优先, 「日本」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
 
   - name: "PayPal"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, 手动选择 ]
+    proxies: [ 「美国」延迟优先, 手动选择 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Paypal.png
 
   - name: "Telegram"
     type: select
-    proxies: [ 策略选择, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流 ]
+    proxies: [ 策略选择, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png
 
   - name: "TikTok"
     type: select
-    proxies: [ 策略选择, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「香港」细水长流, 「香港」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 策略选择, 「日本」延迟优先, 「韩国」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「香港」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TikTok.png
 
   - name: "Disney"
     type: select
-    proxies: [ 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 「狮城」延迟优先, 「台湾」延迟优先, 「香港」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/DisneyPlus.png
 
   - name: "Netflix"
     type: select
-    proxies: [ 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT, 策略选择 ]
+    proxies: [ 「狮城」延迟优先, 「台湾」延迟优先, 「香港」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择, DIRECT, 策略选择 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
 
   - name: "Emby"
     type: select
-    proxies: [ 「Emby」细水长流, 「Emby」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「香港」细水长流, 「香港」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流, 手动选择, DIRECT ]
+    proxies: [ 「Emby」延迟优先, 「狮城」延迟优先, 「台湾」延迟优先, 「香港」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先, 手动选择, DIRECT ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
 
   - name: "BiliBili"
     type: select
-    proxies: [ DIRECT, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 手动选择 ]
+    proxies: [ DIRECT, 「香港」延迟优先, 「台湾」延迟优先, 手动选择 ]
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Bili.png
 
   - name: "Game"
     type: select
-    proxies: [ DIRECT, 策略选择, 「香港」细水长流, 「香港」放任自流, 「台湾」细水长流, 「台湾」放任自流, 「狮城」细水长流, 「狮城」放任自流, 「日本」细水长流, 「日本」放任自流, 「韩国」细水长流, 「韩国」放任自流, 「美国」细水长流, 「美国」放任自流 ]
+    proxies: [ DIRECT, 策略选择, 「香港」延迟优先, 「台湾」延迟优先, 「狮城」延迟优先, 「日本」延迟优先, 「韩国」延迟优先, 「美国」延迟优先 ]
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png
   - name: "Speedtest"
     type: select
@@ -303,166 +324,94 @@ proxy-groups:
 
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
 
-  - name: "「全部」细水长流"
+  - name: "「全部」延迟优先"
     type: url-test
-    filter: '(?i:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png
-
-  - name: "「全部」放任自流"
-    type: url-test
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Available.png
 
-  - name: "「香港」细水长流"
+  - name: "「香港」延迟优先"
     type: url-test
-    filter: '(?i)(?=.*(?:港|hk|hong))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
-
-  - name: "「香港」放任自流"
-    type: url-test
     filter: '(?i:港|hk|hong)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
 
-  - name: "「台湾」细水长流"
+  - name: "「台湾」延迟优先"
     type: url-test
-    filter: '(?i)(?=.*(?:台|tw|tai))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
-
-  - name: "「台湾」放任自流"
-    type: url-test
     filter: '(?i:台|tw|tai)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
 
-  - name: "「狮城」细水长流"
+  - name: "「狮城」延迟优先"
     type: url-test
-    filter: '(?i)(?=.*(?:新|狮城|sg|sing))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
-
-  - name: "「狮城」放任自流"
-    type: url-test
     filter: '(?i:新|狮城|sg|sing)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
 
-  - name: "「日本」细水长流"
+  - name: "「日本」延迟优先"
     type: url-test
-    filter: '(?i)(?=.*(?:日|jp|japan))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
-
-  - name: "「日本」放任自流"
-    type: url-test
     filter: '(?i:日|jp|japan)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
 
-  - name: "「韩国」细水长流"
+  - name: "「韩国」延迟优先"
     type: url-test
-    filter: '(?i)(?=.*(?:韩|kr|korea))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
-
-  - name: "「韩国」放任自流"
-    type: url-test
     filter: '(?i:韩|kr|korea)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
 
-  - name: "「美国」细水长流"
+  - name: "「美国」延迟优先"
     type: url-test
-    filter: '(?i)(?=.*(?:美|us|america))(?=.*(?:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.])))'
-    exclude-filter: '(?i:剩余|到期|重置|emby)'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
-
-  - name: "「美国」放任自流"
-    type: url-test
     filter: '(?i:美|us|america)'
     exclude-filter: '(?i:剩余|到期|重置|emby|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
-
-  # 屏蔽了港日美地区的低倍率节点
-
-  - name: "「Emby」细水长流"
-    type: url-test
-    filter: '(?i:x\s*0\.\d+|(?<![\d.])0\.\d+\s*[x倍]|(?<![a-z\d.])0\.\d+(?![\d.]))'
-    exclude-filter: '(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america)'
-    url: https://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    include-all: true
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
 
   # 屏蔽了港日美地区的全部节点
 
-  - name: "「Emby」放任自流"
+  # 屏蔽了港日美地区的全部节点
+
+  - name: "「Emby」延迟优先"
     type: url-test
-    exclude-filter: '(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     url: https://cp.cloudflare.com/generate_204
+    expected-status: 204
     interval: 300
     tolerance: 100
     include-all: true
+    exclude-filter: '(?i:剩余|到期|重置|emby|港|hk|hong|日|jp|japan|美|us|america|x\s*(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)|(?<![\d.])(?:(?:[2-9]\d*|1\d+)(?:\.\d+)?|1\.0*[1-9]\d*)\s*[x倍]|(?<![a-z\d.])(?:(?:[2-9]\d*|1\d+)\.\d+|1\.0*[1-9]\d*)(?![\d.]))'
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
 
 rule-providers:
@@ -470,6 +419,7 @@ rule-providers:
   Direct:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     #规则文件的存储位置与文件名（不可重复，会被覆盖）
     path: ./RuleSet/Direct.yaml
@@ -479,6 +429,7 @@ rule-providers:
   Advertising:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     #规则文件的存储位置与文件名（不可重复，会被覆盖）
     path: ./RuleSet/Advertising.yaml
@@ -488,6 +439,7 @@ rule-providers:
   Hijacking:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Hijacking.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking.yaml
@@ -496,6 +448,7 @@ rule-providers:
   Privacy:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Privacy.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Privacy/Privacy.yaml
@@ -504,6 +457,7 @@ rule-providers:
   TikTok:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/TikTok.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml
@@ -512,6 +466,7 @@ rule-providers:
   YouTube:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/YouTube.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
@@ -520,6 +475,7 @@ rule-providers:
   Disney:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Disney.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
@@ -528,6 +484,7 @@ rule-providers:
   Netflix:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Netflix.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml
@@ -536,6 +493,7 @@ rule-providers:
   Emby:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Emby.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml
@@ -544,6 +502,7 @@ rule-providers:
   BiliBili:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/BiliBili.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
@@ -552,6 +511,7 @@ rule-providers:
   ChinaMedia:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/ChinaMedia.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
@@ -589,6 +549,7 @@ rule-providers:
   GlobalMedia:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/GlobalMedia.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
@@ -597,6 +558,7 @@ rule-providers:
   PayPal:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/PayPal.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
@@ -605,6 +567,7 @@ rule-providers:
   Apple:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Apple.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml
@@ -613,6 +576,7 @@ rule-providers:
   SystemOTA:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/SystemOTA.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SystemOTA/SystemOTA.yaml
@@ -621,6 +585,7 @@ rule-providers:
   Google:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Google.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
@@ -629,6 +594,7 @@ rule-providers:
   Microsoft:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Microsoft.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
@@ -637,6 +603,7 @@ rule-providers:
   OpenAI:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/OpenAI.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
@@ -645,6 +612,7 @@ rule-providers:
   Cloudflare:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Cloudflare.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflare/Cloudflare.yaml
@@ -653,6 +621,7 @@ rule-providers:
   Oracle:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Oracle.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Oracle/Oracle.yaml
@@ -661,6 +630,7 @@ rule-providers:
   Gemini:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Gemini.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
@@ -669,6 +639,7 @@ rule-providers:
   Telegram:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Telegram.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
@@ -677,6 +648,7 @@ rule-providers:
   Speedtest:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Speedtest.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
@@ -685,6 +657,7 @@ rule-providers:
   Global:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/Global.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global.yaml
@@ -693,6 +666,7 @@ rule-providers:
   China:
     type: http
     behavior: classical
+    format: yaml
     interval: 86400
     path: ./RuleSet/China.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China.yaml
@@ -701,6 +675,7 @@ rule-providers:
   ChinaIP:
     type: http
     behavior: ipcidr
+    format: yaml
     path: ./RuleSet/ChinaIP.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml
     interval: 86400
@@ -736,7 +711,7 @@ rules:
   - RULE-SET,Microsoft,Microsoft
   - RULE-SET,OpenAI,OpenAI
   - RULE-SET,Cloudflare,策略选择
-  - RULE-SET,Oracle,「美国」放任自流
+  - RULE-SET,Oracle,「美国」延迟优先
   - RULE-SET,Telegram,Telegram
   - RULE-SET,Speedtest,Speedtest
   - RULE-SET,Global,策略选择
@@ -746,16 +721,17 @@ rules:
   - DOMAIN-SUFFIX,dns.com,DIRECT
   - DOMAIN-SUFFIX,volcengine.com,DIRECT
   - DOMAIN-SUFFIX,nodeseek.com,手动选择
-  - DOMAIN-KEYWORD,freenom,「美国」放任自流
+  - DOMAIN-KEYWORD,freenom,「美国」延迟优先
   - IP-CIDR,95.161.76.100/31,REJECT-DROP,no-resolve
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
-  - IP-CIDR,191.1.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
   - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
   - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
   - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
-  - IP-CIDR,fe80::/10,DIRECT,no-resolve
+  - IP-CIDR6,fc00::/7,DIRECT,no-resolve
+  - IP-CIDR6,fe80::/10,DIRECT,no-resolve
   - IP-CIDR,119.28.28.28/32,DIRECT,no-resolve
   - IP-CIDR,182.254.116.0/24,DIRECT,no-resolve
   - GEOIP,CN,DIRECT
