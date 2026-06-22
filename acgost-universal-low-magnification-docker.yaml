@@ -236,9 +236,9 @@ proxy-groups:
 
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Apple.png
 
-  - name: "系统更新"
+  - name: "AppleOTA"
     type: select
-    proxies: [ 「美国」细水长流, 「美国」放任自流, 策略选择, DIRECT, REJECT ]
+    proxies: [ REJECT, DIRECT, 「美国」细水长流, 「美国」放任自流 ]
     icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Adblock.png
 
   - name: "Google"
@@ -764,7 +764,7 @@ rules:
   - RULE-SET,GlobalMedia,策略选择
   - RULE-SET,PayPal,PayPal
   - RULE-SET,Apple,Apple
-  - RULE-SET,SystemOTA,系统更新
+  - RULE-SET,SystemOTA,AppleOTA
   - RULE-SET,Google,Google
   - RULE-SET,Gemini,Google
   - RULE-SET,Microsoft,Microsoft
